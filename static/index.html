@@ -6,24 +6,36 @@
 	</head>
 	<body>
 
+		<form id="new">
+			<input name="title" placeholder="Title">
+			<input name="url" placeholder="URL">
+			<input type="button" id="submit" value="Submit">
+		</form>
+
+		<input id="search">
+
 		<div id="resources">
 
 
 		</div>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.14.0/babel.min.js"></script>
 
-		<script>
-		function search(q) {
-			$.get("/search", { q: q || "" }, function(res) {
-				$("#resources").html(
-					JSON.parse(res)
-						.map(resource => "<h1>" + resource.title + "</h1>")
-				);
+		<script type="text/babel" data-presets="es2015">
+		const search = () => {
+			$.get("/search", { q: $("#search").val() }, res => {
+				$("#resources").html(JSON.parse(res).map(resource => "<h1>" + resource.title + "</h1>"));
 			});
 		}
 
-		search("kh");
+		$("#search").keyup(search);
+
+		$("#submit").click(() => {
+			$.get("/submit?" + $("#new").serialize(), () => {
+				search();
+			});
+		});
 		</script>
 
 	</body>

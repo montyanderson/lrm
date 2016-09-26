@@ -20,23 +20,7 @@
 		</div>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.14.0/babel.min.js"></script>
-
-		<script type="text/babel" data-presets="es2015">
-		const search = () => {
-			$.get("/search", { q: $("#search").val() }, res => {
-				$("#resources").html(JSON.parse(res).map(resource => "<h1>" + resource.title + "</h1>"));
-			});
-		}
-
-		$("#search").keyup(search);
-
-		$("#submit").click(() => {
-			$.get("/submit?" + $("#new").serialize(), () => {
-				search();
-			});
-		});
-		</script>
+		<script src="/index.js"></script>
 
 	</body>
 </html>

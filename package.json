@@ -4,7 +4,9 @@
   "description": "Localized Resource Manager",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "browserify client.js -t [ babelify --presets [ es2015 ] ] -o static/index.js",
+    "dev": "watchify client.js -t [ babelify --presets [ es2015 ] ] -o static/index.js"
   },
   "repository": {
     "type": "git",
@@ -17,9 +19,14 @@
   },
   "homepage": "https://github.com/montyanderson/lrm#readme",
   "dependencies": {
+    "babel-preset-es2015": "^6.14.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.0",
     "express": "^4.14.0",
+    "hogan.js": "^3.0.2",
     "minimist": "^1.2.0",
     "mysql": "^2.11.1",
-    "sequelize": "^3.24.3"
+    "sequelize": "^3.24.3",
+    "watchify": "^3.7.0"
   }
 }

@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/montyanderson/lrm/issues"
   },
-  "homepage": "https://github.com/montyanderson/lrm#readme"
+  "homepage": "https://github.com/montyanderson/lrm#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "minimist": "^1.2.0",
+    "mysql": "^2.11.1",
+    "sequelize": "^3.24.3"
+  }
 }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+
+	</head>
+	<body>
+
+		<div id="resources">
+
+
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+		<script>
+		function search(q) {
+			$.get("/search", { q: q || "" }, function(res) {
+				$("#resources").html(
+					JSON.parse(res)
+						.map(resource => "<h1>" + resource.title + "</h1>")
+				);
+			});
+		}
+
+		search("kh");
+		</script>
+
+	</body>
+</html>

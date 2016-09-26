@@ -1,0 +1,2 @@
+# lrm
+Localized Resource Manager
